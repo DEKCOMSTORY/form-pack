@@ -6,8 +6,11 @@ function findElement(form, options) {
   const str = [];
 
   for (let i = 0; i < form.elements.length; i += 1) {
-    if (options.ignoreDisable && form.elements[i].disabled) break;
-    if (form.elements[i][options.findAttr] === '') continue;
+    const currentKey = form.elements[i][options.attr]
+    const currentVal = encodeURIComponent(form.elements[i].value)
+
+    if (options.skipDisable && form.elements[i].disabled) break;
+    if (currentKey === '') continue;
 
     switch (form.elements[i].nodeName) {
     case 'INPUT':
@@ -31,17 +34,17 @@ function findElement(form, options) {
       case 'url':
       case 'week':
         data.push({
-          [form.elements[i][options.findAttr]]: encodeURIComponent(form.elements[i].value)
+          [currentKey]: currentVal
         })
-        str.push([form.elements[i][options.findAttr]] + '=' + encodeURIComponent(form.elements[i].value))
+        str.push([currentKey] + '=' + currentVal)
         break;
       case 'checkbox':
       case 'radio':
         if (form.elements[i].checked) {
           data.push({
-            [form.elements[i][options.findAttr]]: encodeURIComponent(form.elements[i].value)
+            [currentKey]: currentVal
           })
-          str.push([form.elements[i][options.findAttr]] + '=' + encodeURIComponent(form.elements[i].value))
+          str.push([currentKey] + '=' + currentVal)
         }
         break;
       case 'file':
@@ -50,28 +53,29 @@ function findElement(form, options) {
       break;
     case 'TEXTAREA':
       data.push({
-        [form.elements[i][options.findAttr]]: encodeURIComponent(form.elements[i].value)
+        [currentKey]: currentVal
       })
-      str.push([form.elements[i][options.findAttr]] + '=' + encodeURIComponent(form.elements[i].value))
+      str.push([currentKey] + '=' + currentVal)
       break;
     case 'SELECT':
       switch (form.elements[i].type) {
       case 'select-one':
         data.push({
-          [form.elements[i][options.findAttr]]: encodeURIComponent(form.elements[i].value)
+          [currentKey]: currentVal
         })
-        str.push([form.elements[i][options.findAttr]] + '=' + encodeURIComponent(form.elements[i].value))
+        str.push([currentKey] + '=' + currentVal)
         break;
       case 'select-multiple':
         const optionEl = []
         for (let j = 0; j < form.elements[i].options.length; j += 1) {
+          const currentOps = encodeURIComponent(form.elements[i].options[j].value)
           if (form.elements[i].options[j].selected) {
-            optionEl.push(encodeURIComponent(form.elements[i].options[j].value))
-            str.push([form.elements[i][options.findAttr]] + '=' + encodeURIComponent(form.elements[i].options[j].value))
+            optionEl.push(currentOps)
+            str.push(currentOps)
           }
         }
         data.push({
-          [form.elements[i][options.findAttr]]: optionEl
+          [currentKey]: optionEl
         })
         break;
       }
@@ -82,9 +86,9 @@ function findElement(form, options) {
       case 'submit':
       case 'button':
         data.push({
-          [form.elements[i][options.findAttr]]: encodeURIComponent(form.elements[i].value)
+          [currentKey]: currentVal
         })
-        str.push([form.elements[i][options.findAttr]] + '=' + encodeURIComponent(form.elements[i].value))
+        str.push([currentKey] + '=' + currentVal)
         break;
       }
       break;
@@ -100,8 +104,8 @@ function findElement(form, options) {
 // Main function
 function formPack(form, options = {}) {
   const defaultOptions = {
-    findAttr: 'name',
-    ignoreDisable: false,
+    attr: 'name',
+    skipDisable: false,
   }
 
   // Apply user customize options
@@ -111,7 +115,8 @@ function formPack(form, options = {}) {
   const data = findElement(form, options);
 
   if (!options.urlencoded) {
-    const json = Object.assign({}, ...data.json);
+    const json = {}
+    data.json.forEach(x => Object.assign(json, x))
 
     return json;
   } else {

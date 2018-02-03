@@ -14,6 +14,10 @@ gulp.task('javascript', () => {
   return gulp.src(`${source_dir}/*.js`)
     .pipe(babel({
       presets: ['env'],
+      plugins: [
+        'check-es2015-constants',
+        'transform-es2015-block-scoping',
+      ]
     }))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))

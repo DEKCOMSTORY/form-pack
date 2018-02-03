@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-plugin-check-es2015-constants": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "gulp": "^3.9.1",
