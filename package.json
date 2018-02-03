@@ -1,0 +1,25 @@
+{
+  "name": "form-pack",
+  "version": "1.0.0",
+  "description": "The tiny vanilla javascript library for serialize form-data to JSON or URL encoded.",
+  "main": "dist/form-pack.min.js",
+  "repository": "https://github.com/DEKCOMSTORY/form-pack.git",
+  "author": "Jirachai Chansivanon <antronic.inc@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gulp watch",
+    "build": "gulp",
+    "test": "mocha --timeout 10000"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "jsdom": "^11.6.2",
+    "mocha": "^5.0.0"
+  }
+}
