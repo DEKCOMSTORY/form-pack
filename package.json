@@ -5,6 +5,7 @@
   "main": "dist/form-pack.min.js",
   "repository": "https://github.com/DEKCOMSTORY/form-pack.git",
   "author": "Jirachai Chansivanon <antronic.inc@gmail.com>",
+  "contributors": "Chaiyapat Tantiworachot <sonkungz_on@hotmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "gulp watch",
