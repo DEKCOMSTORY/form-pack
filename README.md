@@ -37,7 +37,7 @@ formPack(formDOM, options)
 | attr  | `"name"` | Determine an attributes for reference input elements |
 | skipDisabled  | `false` | Exclude an input element that has `disabled` attribute |
 
-You can find out more usage on [Examples](#Examples) section.
+You can find out more usage on [Examples](#examples) section.
 
 
 ### Examples
