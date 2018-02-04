@@ -23,6 +23,11 @@ Form-pack served the easy usage.
 
 Form-pack available to customize output type both on `JSON` and `urlencoded`
 
+```javascript
+formPack(formDOM, options)
+// return as JSON by default
+```
+
 ### Option Attributes
 |Name|default|Description|
 |-|:-|-:|
@@ -65,3 +70,7 @@ const result = formPack(form, { urlencoded: true })
 
 // firstname=Jirachai&email=jirachai.c@outlook.com
 ```
+
+
+## License
+Form-pack is [MIT licensed](https://github.com/DEKCOMSTORY/form-pack/blob/master/LICENSE).
