@@ -73,6 +73,8 @@ const result = formPack(form, { urlencoded: true })
 // firstname=Jirachai&email=jirachai.c@outlook.com
 ```
 
+## Creation Reason
+No library that fit with us. 😢
 
 ## License
 Form-pack is [MIT licensed](https://github.com/DEKCOMSTORY/form-pack/blob/master/LICENSE).
