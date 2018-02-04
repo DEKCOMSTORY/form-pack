@@ -7,7 +7,7 @@ function findElement(form, options) {
     const currentKey = form.elements[i][options.attr];
     const currentVal = encodeURIComponent(form.elements[i].value);
 
-    if (options.skipDisable && form.elements[i].disabled) break;
+    if (options.skipDisabled && form.elements[i].disabled) break;
     if (currentKey !== '') {
       switch (form.elements[i].nodeName) {
         case 'INPUT':
@@ -108,7 +108,7 @@ function findElement(form, options) {
 function formPack(form, options = {}) {
   const defaultOptions = {
     attr: 'name',
-    skipDisable: false,
+    skipDisabled: false,
   };
 
   // Apply user customize options
