@@ -126,5 +126,9 @@ function formPack(form, options = {}) {
   return data.urlencoded;
 }
 
-module.exports = formPack;
-export default formPack;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = formPack;
+  exports.default = formPack;
+} else {
+  window.formPack = formPack;
+}
