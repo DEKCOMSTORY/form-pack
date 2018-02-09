@@ -43,6 +43,7 @@ describe('Form Pack testing...', function() {
       <form>
         <input name="choice" type="multitext" value="Tommy"/>
         <input name="choice" type="multitext" value="Stark"/>
+        <input name="choice" type="multitext" value="Tony"/>
       </form>
     `)
 
@@ -51,7 +52,7 @@ describe('Form Pack testing...', function() {
     expect(output).to.be.a('object')
 
     expect(output).to.deep.equal({
-      choice: ['Tommy', 'Stark'],
+      choice: ['Tommy', 'Stark', 'Tony'],
     })
   })
 })

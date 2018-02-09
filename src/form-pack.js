@@ -126,11 +126,11 @@ function formPack(form, options = {}) {
   if (!customizedOption.urlencoded) {
     const json = {};
     data.json.forEach((el) => {
-      const pack = [];
+      let pack = [];
       const key = Object.keys(el)[0];
       if (Object.hasOwnProperty.call(json, key)) {
         if (Array.isArray(json[key])) {
-          pack.concat(json[key]);
+          pack = pack.concat(json[key]);
         } else {
           pack.push(json[key]);
         }
