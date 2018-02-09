@@ -44,6 +44,12 @@ function findElement(form, options) {
                 str.push(`${[currentKey]}=${currentVal}`);
               }
               break;
+            case 'multitext':
+              data.push({
+                [currentKey]: currentVal,
+              });
+              str.push(`${[currentKey]}=${currentVal}`);
+              break;
             case 'file':
               break;
             // no default
@@ -119,7 +125,21 @@ function formPack(form, options = {}) {
 
   if (!customizedOption.urlencoded) {
     const json = {};
-    data.json.forEach(x => Object.assign(json, x));
+    data.json.forEach((el) => {
+      const pack = [];
+      const key = Object.keys(el)[0];
+      if (Object.hasOwnProperty.call(json, key)) {
+        if (Array.isArray(json[key])) {
+          pack.concat(json[key]);
+        } else {
+          pack.push(json[key]);
+        }
+        pack.push(el[key]);
+        Object.assign(json, { [key]: pack });
+      } else {
+        Object.assign(json, el);
+      }
+    });
 
     return json;
   }

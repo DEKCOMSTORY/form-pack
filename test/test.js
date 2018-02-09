@@ -38,4 +38,20 @@ describe('Form Pack testing...', function() {
 
     expect(output).to.equal('firstname=Tommy&lastname=Stark')
   })
+  it('expect get data correct form from multitext type', function() {
+    const { window } = new JSDOM(`
+      <form>
+        <input name="choice" type="multitext" value="Tommy"/>
+        <input name="choice" type="multitext" value="Stark"/>
+      </form>
+    `)
+
+    const output = formPack(window.document.querySelector('form'))
+
+    expect(output).to.be.a('object')
+
+    expect(output).to.deep.equal({
+      choice: ['Tommy', 'Stark'],
+    })
+  })
 })
