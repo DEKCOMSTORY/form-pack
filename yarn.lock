@@ -1870,6 +1870,10 @@ is-glob@^3.1.0:
   dependencies:
     is-extglob "^2.1.0"
 
+is-json@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/is-json/-/is-json-2.0.1.tgz#6be166d144828a131d686891b983df62c39491ff"
+
 is-number@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-3.0.0.tgz#24fd6201a4782cf50561c810276afc7d12d71195"

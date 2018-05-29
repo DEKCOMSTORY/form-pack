@@ -28,5 +28,8 @@
     "gulp-uglify": "^3.0.0",
     "jsdom": "^11.6.2",
     "mocha": "^5.0.0"
+  },
+  "dependencies": {
+    "is-json": "^2.0.1"
   }
 }

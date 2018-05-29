@@ -4,6 +4,7 @@ const expect = chai.expect
 const { JSDOM } = require('jsdom')
 
 const formPack = require('../dist/form-pack.min')
+const jsonFormPack = require('../dist/json.min')
 
 describe('Form Pack testing...', function() {
   it('expect get data and return as JSON', function() {
@@ -54,5 +55,11 @@ describe('Form Pack testing...', function() {
     expect(output).to.deep.equal({
       choice: ['Tommy', 'Stark', 'Tony'],
     })
+  })
+
+  it('expect get data correct form from json type', function() {
+    const output = jsonFormPack({ name: 'Tom', age: 12 })
+
+    expect(output).to.equal('name=Tom&age=12')
   })
 })
