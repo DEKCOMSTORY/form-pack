@@ -1,3 +1,4 @@
+// const { jsonFormPack, toFormData } = require('./json.js');
 // This function got inspire from https://github.com/riverside/form-serialize
 function findElement(form, options) {
   const data = [];
@@ -147,8 +148,13 @@ function formPack(form, options = {}) {
 }
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  // exports.toFormData = toFormData;
+  // exports.jsonFormPack = jsonFormPack;
+  exports.formPack = formPack;
   module.exports = formPack;
   exports.default = formPack;
 } else {
   window.formPack = formPack;
+  // window.jsonFormPack = jsonFormPack;
+  // window.jsonFormPack.toFormData = toFormData;
 }
