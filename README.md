@@ -3,6 +3,8 @@ The tiny vanilla javascript library for serialize form-data to JSON or URL encod
 
 Opensource โดยคนไทย จากเพจ [DEKCOMSTORY](https://facebook.com/dekcomstorypage)
 
+![Form Pack!](https://github.com/DEKCOMSTORY/form-pack/blob/master/formpack.jpg?raw=false)
+
 ## Installation
 Form-pack is available on [npm](https://www.npmjs.com/)
 
